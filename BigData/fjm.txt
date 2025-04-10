@@ -1,0 +1,37 @@
+#FJM
+import pandas as pd
+
+hash1 = lambda x: (3 * x + 1) % 5
+hash2 = lambda x: (x + 3) % 5
+numbers = [1,3,2,1,2,3,4,3,1]
+
+def dec_to_binary(x):
+  return format(x, 'b').zfill(2)
+
+def CountTrailingZeros(n):
+    bit = bin(n)[2:]
+    bit = bit[::-1]
+    zero = 0;
+    for i in range(len(bit)):
+        if (bit[i] == '0'):
+            zero += 1
+        else:
+            break
+    return zero
+
+df = {'Number': numbers, 'Hash1': [hash1(x) for x in numbers], 'Hash2': [hash2(x) for x in numbers]}
+df['Binary1'] = [dec_to_binary(x) for x in df['Hash1']]
+df['Binary2'] = [dec_to_binary(x) for x in df['Hash2']]
+df['r1'] = [CountTrailingZeros(int(x,2)) for x in df['Binary1']]
+df['r2'] = [CountTrailingZeros(int(x,2)) for x in df['Binary2']]
+print(pd.DataFrame(df))
+df['r1'] = pd.Series(df['r1'])
+df['r2'] = pd.Series(df['r2'])
+r1max = df['r1'].max()
+r2max = df['r2'].max()
+R = int((r1max + r2max) / 2)
+result = 2**R
+print("Maximum value of r1:", r1max)
+print("Maximum value of r2:", r2max)
+print("Average of max(r1) and max(r2): (R) = ", R)
+print(f"Estimated number of distinct elements: 2^R = 2^{R} = {result}")

@@ -1,0 +1,16 @@
+#AMS
+stream = [1, 2, 7, 1, 4, 9, 4, 6, 1, 6, 4, 4, 5, 5, 5, 9, 8, 7, 2, 2, 4, 4, 1]
+x0 = 1
+x1 = 5
+x2 = 8
+n = len(stream)
+def count_occurrences(stre am, pos):
+  element = stream[pos-1]
+  return sum(1 for elem in stream[pos-1:] if elem == element)
+
+data = {'x': [x0, x1, x2], 'x.el': [stream[x0-1], stream[x1-1], stream[x2-1]]}
+data['x.val'] = [count_occurrences(stream, x) for x in data['x']]
+data['n(2*x.val-1)'] = [n * (2 *val-1) for val in data['x.val']]
+average = sum(data['n(2*x.val-1)']) / len(data['n(2*x.val-1)'])
+print(pd.DataFrame(data))
+print(f"\nResult = {average}")

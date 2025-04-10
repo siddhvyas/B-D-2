@@ -1,0 +1,48 @@
+# Sample User-Item Rating Data
+# Each tuple represents (user_id, item_id, rating)
+ratings = [
+    (1, 1, 5),
+    (1, 2, 4),
+    (1, 3, 2),
+    (2, 1, 3),
+    (2, 2, 5),
+    (2, 3, 4),
+    (3, 1, 2),
+    (3, 2, 3),
+    (3, 3, 4)
+]
+
+# Function to calculate similarity between two users
+def cosine_similarity(user1_ratings, user2_ratings):
+    common_items = set(user1_ratings.keys()) & set(user2_ratings.keys())
+    if len(common_items) == 0:
+        return 0
+    dot_product = sum(user1_ratings[item] * user2_ratings[item] for item in common_items)
+    user1_norm = sum(rating ** 2 for rating in user1_ratings.values()) ** 0.5
+    user2_norm = sum(rating ** 2 for rating in user2_ratings.values()) ** 0.5
+    return dot_product / (user1_norm * user2_norm)
+
+# Function to get recommendations for a user
+def get_recommendations(user_id, ratings, similarity_func, k=3):
+    user_ratings = {item_id: rating for u_id, item_id, rating in ratings if u_id == user_id}
+    other_users = {u_id: {item_id: rating for _, item_id, rating in ratings if u_id != user_id} for u_id in set(u_id for u_id, _, _ in ratings)}
+    similarities = {other_user_id: similarity_func(user_ratings, other_user_ratings) for other_user_id, other_user_ratings in other_users.items()}
+    sorted_similarities = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
+    top_k_similar_users = sorted_similarities[:k]
+    recommendations = {}
+    for other_user_id, similarity in top_k_similar_users:
+        other_user_ratings = other_users[other_user_id]
+        for item_id, rating in other_user_ratings.items():
+            if item_id not in user_ratings:
+                if item_id not in recommendations:
+                    recommendations[item_id] = (rating, similarity)
+                else:
+                    weighted_rating, total_similarity = recommendations[item_id]
+                    recommendations[item_id] = (weighted_rating + rating * similarity, total_similarity + similarity)
+    final_recommendations = [(item_id, weighted_rating / total_similarity) for item_id, (weighted_rating, total_similarity) in recommendations.items()]
+    return sorted(final_recommendations, key=lambda x: x[1], reverse=True)
+
+# Example usage
+user_id = 3
+recommendations = get_recommendations(user_id, ratings, cosine_similarity)
+print("Recommendations for user", user_id, ": ", recommendations)
