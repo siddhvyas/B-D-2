@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "loop",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidityprogramming/doWhileloop.sol": "DoWhile"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidityprogramming/doWhileloop.sol": {
+			"keccak256": "0x767f03ff5e304b8104a00d672d9b514977f3a32f7717464e6800ee914890efac",
+			"urls": [
+				"bzz-raw://66d56fb6ac0b41157588cfd134b5d59495af0f4385426214c21d53c85f4ee064",
+				"dweb:/ipfs/QmR2dh3utScrh3tx2y6sjcTCxFbBMQKFAw3tJXVVQCwfzG"
+			]
+		}
+	},
+	"version": 1
+}

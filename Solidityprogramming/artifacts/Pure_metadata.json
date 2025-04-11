@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getData",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidityprogramming/pureInsolidity.sol": "Pure"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidityprogramming/pureInsolidity.sol": {
+			"keccak256": "0x102ab966d44ace7eff8c9b69ca6e6fc64a23d103fb3e5573bd05cfffccb73c01",
+			"urls": [
+				"bzz-raw://faf54e507790d31f93951a4b3003e82bfc76647f4d21f63ca628474533d4c2c4",
+				"dweb:/ipfs/QmeEUA1o6qxbJ7J9T1idmMpJYdJL8xcG9EpbuQoUWRXhWr"
+			]
+		}
+	},
+	"version": 1
+}
