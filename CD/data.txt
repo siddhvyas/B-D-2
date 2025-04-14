@@ -1,0 +1,9 @@
+# Mnemonics
+LOAD, Load value into register
+ADD, Add two registers
+STORE, Store value into memory
+
+# Symbols
+A, 5
+B, 10
+RESULT, 0
